@@ -11,16 +11,16 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/test/**': {
-         target: 'http://192.168.1.115:8081', // 表示你跨域请求的接口的域名
+      '/api/**': {
+         target: 'http://192.168.1.120:8081', // 表示你跨域请求的接口的域名
          secure: false, // 如果是https接口，需要配置这个参数
          changeOrigin: true, // 如果接口跨域，需要进行这个参数配置
          pathRewrite: { 
-           '^/test': 'http://192.168.1.115:8081' //路径重写 
+           '^/api': 'http://192.168.1.120:8081' //路径重写 
          } 
        },
-       '/test/*': {
-         target: 'http://192.168.1.115:8081'
+       '/api/*': {
+         target: 'http://192.168.1.120:8081'
        } 
      },
     // Various Dev Server settings

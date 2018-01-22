@@ -1,38 +1,39 @@
 <template>
       <div class="manage_page fillcontain">
 		<el-row style="height: 100%; overflow:hidden;">
-	  		<div style="float:left;height:100%;background:#ccc;">
-                 <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-                    <el-radio-button :label="false">展开</el-radio-button>
-                    <el-radio-button :label="true">收起</el-radio-button>
-                </el-radio-group>
-                <el-menu  :default-active="defaultActive" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+	  		<div class="el-sider">
+                  <el-button  size="mini"  @click="rightClick($event)" >
+                      <i :class="classIcon" ></i>
+                  </el-button>
+                <el-menu  
+                    :default-active="defaultActive" 
+                    class="el-menu-vertical-demo" 
+                    @open="handleOpen" 
+                    @close="handleClose" 
+                    active-text-color = "#009cff"
+                    :router = "true"
+                    :collapse="isCollapse">
                     <el-submenu index="1">
                         <template slot="title">
-                        <i class="el-icon-location"></i>
-                        <span slot="title">导航一</span>
+                            <i class="el-icon-location"></i>
+                            <span slot="title">导航一</span>
                         </template>
-                        <el-menu-item-group>
-                        <span slot="title">分组一</span>
-                        <el-menu-item index="1-1">选项1</el-menu-item>
-                        <el-menu-item index="1-2">选项2</el-menu-item>
+                        <!-- <el-menu-item-group title="分组1">
+                            <el-menu-item index="1-1">选项1</el-menu-item>
+                            <el-menu-item index="1-2">选项2</el-menu-item>
                         </el-menu-item-group>
                         <el-menu-item-group title="分组2">
-                        <el-menu-item index="1-3">选项3</el-menu-item>
-                        </el-menu-item-group>
+                            <el-menu-item index="1-3">选项3</el-menu-item>
+                        </el-menu-item-group> -->
+                        <el-submenu index="1-3">
+                            <span slot="title">选项3</span>
+                            <el-menu-item index="/">去登录</el-menu-item>
+                        </el-submenu>
                         <el-submenu index="1-4">
-                        <span slot="title">选项4</span>
-                        <el-menu-item index="1-4-1">选项1</el-menu-item>
+                            <span slot="title">选项4</span>
+                            <el-menu-item index="1-4-1">选项1</el-menu-item>
                         </el-submenu>
                     </el-submenu>
-                    <el-menu-item index="2">
-                        <i class="el-icon-menu"></i>
-                        <span slot="title">导航二</span>
-                    </el-menu-item>
-                    <el-menu-item index="3">
-                        <i class="el-icon-setting"></i>
-                        <span slot="title">导航三</span>
-                    </el-menu-item>
                </el-menu>
             </div>
                 
@@ -49,7 +50,8 @@
 export default {
   data() {
     return {
-      isCollapse: true
+      isCollapse: true,
+      classIcon:'el-icon-d-arrow-right'
     };
   },
   methods: {
@@ -58,6 +60,15 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    // 汉堡包按钮点击事件（小屏）
+    rightClick($event) {
+        this.isCollapse = !this.isCollapse
+        if(this.classIcon == 'el-icon-d-arrow-right'){
+            this.classIcon =  'el-icon-d-arrow-left'
+        }else if(this.classIcon ==  'el-icon-d-arrow-left'){
+            this.classIcon =  'el-icon-d-arrow-right'
+        }
     }
   },
   computed: {
@@ -70,17 +81,47 @@ export default {
 
 
 <style lang="less" scoped>
-
     @import "../../style/mixin";
-     .el-menu-vertical-demo{
-         background: #ccc;
-         .el-submenu .el-menu{
-             background: #ccc; 
-         }
-     }
+    .el-sider{
+        float:left;
+        height: 100%;
+        overflow: hidden;
+        position: relative; 
+        background:@deepBlue;
+        .el-button{
+            position: absolute;
+            right: 11px; 
+            top: 10px; 
+            background-color: #1f2d3d;
+            border-color:#1f2d3d; 
+            color: #ccc;
+            z-index: 1;
+        }
+        .el-menu-vertical-demo{
+            background:@deepBlue;
+            padding-top: 44px;
+            height: 100%;
+            .el-submenu{
+                .el-submenu__title{
+                    span{
+                        .sc(16px, #ccc);
+                    }
+                }
+                .el-menu{
+                    .el-submenu{
+                        .el-menu{
+                            .el-menu-item{
+                                color: #999;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 200px;
-        min-height: 400px;
-
+        background:@deepBlue;
     }
 </style>

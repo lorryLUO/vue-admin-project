@@ -13,7 +13,7 @@
 						<el-input type="password" placeholder="密码" v-model="loginForm.password"></el-input>
 					</el-form-item>
 					<el-form-item>
-				    	<el-button type="primary" @click="submitForm('loginForm')" class="submit_btn">登陆</el-button>
+				    	<el-button type="primary" @click.prevent="submitForm('loginForm')" class="submit_btn">登陆</el-button>
 				  	</el-form-item>
 				</el-form>
 				<p class="tip">注册过的用户可凭账号密码登录</p>
@@ -65,11 +65,11 @@
 				this.$refs[formName].validate(async valid => {
                     console.log(valid)
 					if(valid) {
-						this.$router.push('layout')
+						
 					    const res = await api.login({
 							username: this.loginForm.username,	
 							password: this.loginForm.password
-						},'get')
+						},'post')
 					    console.log(res)
 					    if (res.data.httpCode === 200) {
 							this.$message({
@@ -110,7 +110,7 @@
 <style lang="less" scoped>
 	@import '../../style/mixin';
 	.login_page{
-		background-color: #324057;
+		background-color: @deepBlue;
 	}
 	.manage_tip{
 		position: absolute;

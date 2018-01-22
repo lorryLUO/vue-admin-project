@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-let url = process.env.NODE_ENV !== 'production' ? '/test' : 'http://192.168.1.115:8081/';
+let url = process.env.NODE_ENV !== 'production' ? '/api' : 'http://192.168.1.120:8081/';
 
 let func_axios = (url = '', data = {}, type = 'POST') => {
-	
+	console.log(data)
 	return new Promise((resolve, reject) => {
 		
 		axios({
@@ -26,5 +26,5 @@ let func_axios = (url = '', data = {}, type = 'POST') => {
 }
 
 export default {
-	login: (data) => func_axios(url + '/login', data),  // 登录
+	login: (data,type) => func_axios(url + '/login', data, type),  // 登录
 }

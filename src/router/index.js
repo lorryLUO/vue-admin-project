@@ -8,6 +8,7 @@ const layout = r => require.ensure([], () => r(require('@/page/index/layout')), 
 const home = r => require.ensure([], () => r(require('@/page/index/home')), 'home');
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -25,5 +26,6 @@ export default new Router({
         } 
       ]
     }
-  ]
+  ],
+  
 })
