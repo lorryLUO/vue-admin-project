@@ -2,9 +2,9 @@
       <div class="manage_page fillcontain">
 		<el-row style="height: 100%; overflow:hidden;">
 	  		<div class="el-sider">
-                  <el-button  size="mini"  @click="rightClick($event)" >
-                      <i :class="classIcon" ></i>
-                  </el-button>
+                <el-button  size="mini"  @click="rightClick($event)" >
+                    <i :class="classIcon" ></i>
+                </el-button>
                 <el-menu  
                     :default-active="defaultActive" 
                     class="el-menu-vertical-demo" 

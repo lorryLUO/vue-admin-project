@@ -82,7 +82,7 @@
 		                        type: 'error',
 		                        message: res.message
 		                    });
-						}
+						} 
 					} else {
 						console.log('error submit!')
 						return false
