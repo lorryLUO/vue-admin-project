@@ -16,8 +16,8 @@
 			}
 		},
 		methods: {
-			btnClick : () =>{
-				let request = new Request('http://192.168.1.129:8081/noLogin/addRole', {
+//			btnClick : () =>{
+				/*let request = new Request('http://192.168.1.129:8081/noLogin/addRole', {
 
 					method: 'POST', 
 					mode: 'no-cors', 
@@ -35,12 +35,12 @@
 					})
 					.then(function(stories) {
 						console.log(stories);
-					});
+					});*/
 
-				/*  async btnClick(){
+				  async btnClick(){
 				    const res = await api.auth('post')
-			    } */
-			}
+			    } 
+//			}
 		}
 	}
 </script>

@@ -70,6 +70,8 @@
 							username: this.loginForm.username,	
 							password: this.loginForm.password
 						},'post')
+						// 可将此处屏蔽
+						this.$router.push('layout')
 					    console.log(res)
 					    if (res.data.httpCode === 200) {
 							this.$message({
